@@ -1,10 +1,11 @@
+using CleanArchitecture.CommonFiles;
 using CleanArchitecture.Domain.Users;
 
 namespace CleanArchitecture.Application.Common.Interfaces;
 
 public interface IJwtTokenGenerator
 {
-    string GenerateToken(
+    Token GenerateToken(
         Guid id,
         string firstName,
         string lastName,

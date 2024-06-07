@@ -1,3 +1,4 @@
+using CleanArchitecture.CommonFiles;
 using CleanArchitecture.Domain.Users;
 
 namespace CleanArchitecture.Application.Authentication.Queries.Login;
@@ -8,4 +9,4 @@ public record GenerateTokenResult(
     string LastName,
     string Email,
     SubscriptionType SubscriptionType,
-    string Token);
+    Token Token);

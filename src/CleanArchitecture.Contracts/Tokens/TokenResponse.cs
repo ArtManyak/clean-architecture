@@ -1,3 +1,4 @@
+using CleanArchitecture.CommonFiles;
 using CleanArchitecture.Contracts.Common;
 
 namespace CleanArchitecture.Contracts.Tokens;
@@ -8,4 +9,4 @@ public record TokenResponse(
     string LastName,
     string Email,
     SubscriptionType SubscriptionType,
-    string Token);
+    Token Token);

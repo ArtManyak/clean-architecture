@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 
 using CleanArchitecture.Application.Common.Interfaces;
+using CleanArchitecture.CommonFiles;
 using CleanArchitecture.Domain.Users;
 
 using Microsoft.Extensions.Options;
@@ -14,7 +15,7 @@ public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGene
 {
     private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
-    public string GenerateToken(
+    public Token GenerateToken(
         Guid id,
         string firstName,
         string lastName,
@@ -44,6 +45,6 @@ public class JwtTokenGenerator(IOptions<JwtSettings> jwtOptions) : IJwtTokenGene
             expires: DateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpirationInMinutes),
             signingCredentials: credentials);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        return new Token(new JwtSecurityTokenHandler().WriteToken(token), DateTime.Now + TimeSpan.FromHours(1));
     }
 }
